@@ -11,6 +11,7 @@ import { ProfileComponent } from './pages/user/profile/profile.component';
 import { UpdateComponent } from './pages/user/update/update.component';
 import { IndexComponent } from './pages/posts/index/index.component';
 import { ShowComponent } from './pages/posts/show/show.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ShowComponent } from './pages/posts/show/show.component';
     ProfileComponent,
     UpdateComponent,
     IndexComponent,
-    ShowComponent
+    ShowComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
