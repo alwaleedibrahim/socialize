@@ -12,6 +12,7 @@ import { UpdateComponent } from './pages/user/update/update.component';
 import { IndexComponent } from './pages/posts/index/index.component';
 import { ShowComponent } from './pages/posts/show/show.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
+import { ImageUploadComponent } from './helpers/image-upload/image-upload.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
     UpdateComponent,
     IndexComponent,
     ShowComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    ImageUploadComponent
   ],
   imports: [
     BrowserModule,
