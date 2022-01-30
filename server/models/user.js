@@ -65,7 +65,13 @@ const userSchema = new mongoose.Schema({
             likes: {
                 type: Number,
                 default: 0
-            }
+            },
+            comments: [
+                {
+                    body: String,
+                    date: Date
+                }
+            ]
         }
     ],
 

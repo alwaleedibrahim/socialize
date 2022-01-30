@@ -92,7 +92,7 @@ class User {
             const user = await userModel.findById(req.user.id)
             user.posts.push({
                 body: req.body.post,
-                time: new Date.now()
+                date: new Date.now()
             })
 
         }
