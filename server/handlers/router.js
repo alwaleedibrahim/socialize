@@ -7,29 +7,29 @@ router.post("/signup", UserController.signup)
 // login
 router.post("/login", UserController.login)
 //logout
-router.post("/logout", UserController.logout)
+router.post("/logout", auth, UserController.logout)
 
-// Serch users
-router.get("/search", UserController.search)
+// Search users
+router.get("/search", auth, UserController.search)
 // Show profile
-router.get("/profile/:id", UserController.showProfile)
+router.get("/profile/:id", auth, UserController.showProfile)
 // Update profile
-router.post("/profile/:id", UserController.updateProfile)
+router.post("/profile/:id", auth, UserController.updateProfile)
 // Delete profile
-router.delete("/profile/:id", UserController.deleteProfile)
+router.delete("/profile/:id", auth, UserController.deleteProfile)
 
 // add post 
-router.post("/posts", UserController.addPost)
+router.post("/posts", auth, UserController.addPost)
 // show post
-router.get("/posts/:id", UserController.showPost)
+router.get("/posts/:id", auth, UserController.showPost)
 // delete post
-router.delete("/posts/:id", UserController.deletePost)
+router.delete("/posts/:id", auth, UserController.deletePost)
 
 
 // like post
-router.post("/posts/:id/like", UserController.like)
+router.post("/posts/:id/like", auth, UserController.like)
 // add comment
-router.post("/posts/:id/comment", UserController.comment)
+router.post("/posts/:id/comment", auth, UserController.comment)
 
 
 router.get("/", (req, res)=> {
