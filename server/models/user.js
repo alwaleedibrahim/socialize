@@ -35,41 +35,49 @@ const userSchema = new mongoose.Schema({
 
     age:{
         type:Number,
-        min:13
+        min:13,
+        default: 13
     },
 
     gender:{
         type:String,
         trim:true,
-        enum:["male", "female"]
+        enum:["male", "female"],
+        default: "male"
     },
 
     bio: {
         type:String,
-        trim:true
+        trim:true,
+        default: ""
     },
 
     location: {
         type:String,
-        trim:true
+        trim:true,
+        default: ""
     },
 
     img:{
-        type:String
+        type:String,
+        default: ""
     },
 
     posts: [
-        { 
+        {
             body: String, 
             date: Date,
-            likes: {
-                type: Number,
-                default: 0
-            },
+            author: String,
+            likes: [
+                {
+                    author: String
+                }
+            ],
             comments: [
                 {
                     body: String,
-                    date: Date
+                    date: Date,
+                    author: String
                 }
             ]
         }
@@ -110,5 +118,5 @@ userSchema.methods.generateToken = async function(){
 }
 
 
-const User = mongoose.model("User", userSchema)
+const User = mongoose.model("users", userSchema)
 module.exports = User

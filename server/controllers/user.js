@@ -1,5 +1,15 @@
 const userModel = require("../models/user")
 
+const getAllPosts = (users) => {
+    const posts = []
+    users.forEach((user) => {
+        user.posts.forEach((post) => {
+            posts.push(post)
+        })
+    })
+    return posts
+}
+
 class User {
     static signup = async (req, res) => {
         try {
@@ -64,7 +74,9 @@ class User {
             const user = await userModel.findById(req.params.id)
             const heads = ["firstName", "lastName", "password", "email", "age", "gender", "bio", "location", "img"]
             heads.forEach((head) => {
-                user[head] = req.user[head]
+                if (req.body[head]) {
+                    user[head] = req.body[head]
+                }
             })
             await user.save()
             res.send(user)
@@ -90,29 +102,25 @@ class User {
     static addPost = async (req, res) => {
         try {
             const user = await userModel.findById(req.user.id)
-            user.posts.push({
+            const post = {
                 body: req.body.post,
-                date: new Date.now()
-            })
-
+                date: new Date(),
+                author: req.user.id
+            }
+            user.posts.push(post)
+            await user.save()
+            res.send(post)
         }
         catch (err) {
             res.send(err)
         }
     }
 
-    static showPost = async (req, res) => {
+    static showAllPosts = async (req, res) => {
         try {
-            // TODO
-        }
-        catch (err) {
-            res.send(err)
-        }
-    }
-
-    static deletePost = async (req, res) => {
-        try {
-            // TODO
+            const users = await userModel.find()
+            const posts = getAllPosts(users)
+            res.send(posts)
         }
         catch (err) {
             res.send(err)
@@ -121,7 +129,20 @@ class User {
 
     static like = async (req, res) => {
         try {
-            // TODO
+            const users = await userModel.find()
+            const posts = getAllPosts(users)
+            const targetPost = posts.filter(post => post._id == req.params.id)[0]
+            const user = await userModel.findById(targetPost.author)
+            const like = {
+                author: req.user.id
+            }
+            user.posts.forEach((post, index) => {
+                if (post._id == req.params.id) {
+                    user.posts[index].likes.push(like)
+                }
+            })
+            await user.save()
+            res.send("Liked!")
         }
         catch (err) {
             res.send(err)
@@ -130,7 +151,22 @@ class User {
 
     static comment = async (req, res) => {
         try {
-            // TODO
+            const users = await userModel.find()
+            const posts = getAllPosts(users)
+            const targetPost = posts.filter(post => post._id == req.params.id)[0]
+            const user = await userModel.findById(targetPost.author)
+            const comment = {
+                body: req.body.comment,
+                date: new Date(),
+                author: req.user.id
+            }
+            user.posts.forEach((post, index) => {
+                if (post._id == req.params.id) {
+                    user.posts[index].comments.push(comment)
+                }
+            })
+            await user.save()
+            res.send(comment)
         }
         catch (err) {
             res.send(err)

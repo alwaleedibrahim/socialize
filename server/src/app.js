@@ -1,12 +1,12 @@
 const express = require("express")
 const cors = require("cors")
 const router = require("../handlers/router")
-const morgan = require("morgan")
+require("../models/dbconnection/dbconnection")
 
 const app = express()
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors())
+app.use(express.json())
 app.use(router)
-app.use(morgan("combined"))
 module.exports = app
