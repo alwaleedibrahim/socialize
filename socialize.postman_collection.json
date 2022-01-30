@@ -1,0 +1,357 @@
+{
+	"info": {
+		"_postman_id": "ef9c5e39-d605-4eef-bf5d-77424361ebba",
+		"name": "socialize",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sign Up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstName",
+							"value": "Ali",
+							"type": "default"
+						},
+						{
+							"key": "lastName",
+							"value": "Abdo",
+							"type": "default"
+						},
+						{
+							"key": "email",
+							"value": "any1@example.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "hweud21324",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/search",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "any1@example.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "hweud21324",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "localhost:3000/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add post",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "post",
+							"value": "It's always good to be in home again #SweetHomeAlabama",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/posts",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show all posts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/posts",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show profile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/profile/61f6f3fd33a11b5a903c9fab",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"profile",
+						"61f6f3fd33a11b5a903c9fab"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Profile",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "firstName",
+							"value": "changed",
+							"type": "default"
+						},
+						{
+							"key": "gender",
+							"value": "female",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/profile/61f71629b9781f80526f34d1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"profile",
+						"61f71629b9781f80526f34d1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Profile",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/profile/61f715db596d21d877105d49",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"profile",
+						"61f715db596d21d877105d49"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Like",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/posts/61f71a515144f343bb401a0c/like",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"posts",
+						"61f71a515144f343bb401a0c",
+						"like"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Comment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "comment",
+							"value": "I agree with you",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/posts/61f71a515144f343bb401a0c/comment",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"posts",
+						"61f71a515144f343bb401a0c",
+						"comment"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
